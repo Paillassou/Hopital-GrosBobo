@@ -1,0 +1,197 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>Le Corps Humain</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css?family=Arvo" rel="stylesheet">
+  <link rel="stylesheet" href="corpstyle.css">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+</head>
+
+<body>
+  <div class="container">
+
+    <div class="auto">
+
+      <header id="pagetitle">Le Corps Humain</header>
+
+      <div class="content">
+
+        <div class="picture">
+          <div class="button">
+
+            <!--             Boutons qui font ancres sur chaque texte lors de l'affichage sur mobile              --> <a href="#shoulder"><button  id="buttonshoulder" class ="buttton"></button></a>
+            <a href="#elbow"><button id="buttonelbow" class="buttton"></button></a>
+            <a href="#hip"><button id="buttonhip" class="buttton"></button></a>
+            <a href="#wrist"><button id="buttonwrist" class="buttton"></button></a>
+            <a href="#knee"><button id="buttonknee" class="buttton"></button></a>
+            <a href="#ankle"><button id="buttonankle" class="buttton"></button></a>
+            <script type="text/javascript">
+              /*Ancre avec scroll progressif*/
+              $(document).ready(function() {
+                $('a').on('click', function(evt) {
+                  /*Bloquer le comportement par défaut: on ne rechargera pas la page */
+                  evt.preventDefault();
+                  /*enregistre la valeur de l'attribut  href dans la variable target*/
+                  var target = $(this).attr('href');
+
+                  $('html, body')
+                    /*on arrête toutes les animations en cours*/
+                    .stop()
+                    /* on fait maintenant l'animation vers le haut (scrollTop) vers
+                     notre ancre target */
+                    .animate({
+                      scrollTop: $(target).offset().top
+                    }, 1000);
+                });
+              });
+            </script>
+          </div>
+
+
+        </div>
+        <div class="text">
+          <p id="shoulder"><span class="title">Epaule</span><br>
+            <br>
+            <br>
+            <br>
+            Région morphologique se situant à la jonction du tronc avec le membre supérieur. Elle comporte
+            plusieurs articulations qui concourent à en faire le complexe articulaire le plus mobile du
+            corps humain. Elle permet d'orienter le membre supérieur dans l'espace, autorisant en
+            particulier son extrémité effectrice, la main, à assurer ses rôles de préhension et de
+            communication avec l'environnement situé à sa portée.</p>
+          <p id="elbow"><span class="title">Coude</span><br>
+            <br>
+            <br>
+            <br>
+            Aussi appelé articulation olécranienne, partie du membre supérieur située entre le bras et
+            l'avant-bras. Cette articulation comprend en avant la région du « pli du coude » (ou dedans de
+            coude). C'est un complexe articulaire synovial du membre supérieur humain reliant le bras à
+            l'avant-bras.</p>
+          <p id="hip"><span class="title">Hanche</span><br>
+            <br>
+            <br>
+            <br>
+            Aussi appelée articulation coxo-fémorale est une articulation (énarthrose) qui permet de
+            joindre la cuisse au bassin. Elle met en jeu deux os : l'os iliaque et le fémur. C'est égalment une ville du Centre-Val de Loire mais ça on s'en fout un peu, je voulais juste rajouter un peu de texte pour faire joli...</p>
+          <p id="wrist"><span class="title">Poignet</span> <br>
+            <br>
+            <br>
+            <br>
+            région du membre supérieur située entre la main et l'avant-bras, et contenant le carpe.
+            Élément-clé pour le fonctionnement de la main, il permet les mouvements (c'est-à-dire les
+            changements de place et d’orientation) de la main par rapport à l’avant-bras, transmet les
+            forces appliquées de la main à l’avant-bras, permet d'adapter la capacité de flexion-extension
+            maximale des doigts et de la préhension.</p>
+          <p id="knee"><span class="title">Genou</span><br>
+            <br>
+            <br>
+            <br>
+            Articulation qui permet de joindre la jambe à la cuisse. Elle met en jeu trois os, le fémur, le
+            tibia et la patella, par le biais de trois articulations, l'articulation fémoro-patellaire et
+            la double articulation fémoro-tibiale. Le cartilage assure la fluidité des mouvements du genou. Le tissu élastique fin, le cartilage, protège l'os et fait en sorte que les surfaces de l'articulation glissent facilement les unes contre
+            les autres.</p>
+          <p id="ankle"><span class="title">Cheville</span><br>
+            <br>
+            <br>
+            <br>
+            Aussi appelée cou-de-pied, articulation qui relie la jambe et le pied. Elle est parfois sujette
+            à des entorses, le plus souvent externes par flexion plantaire et pied en équin. Une cheville adulte est composée, au point de vue osseux, de l'épiphyse inférieure du tibia (malléole interne et plafond), de l'épiphyse inférieure de la
+          fibula (ou péroné) (malléole externe) et du talus (ou astragale). Classiquement, on parle d'articulation supinale de l'arrière pied.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer>By Tunga & Loïc</footer>
+  <script>
+
+/*Fonction jQuery
+Tout le texte est en display none. A chaque clic le texte concerné s'affiche, à chaque clic suivant tout redisparait et le bon texte suivant apparaît
+ */
+
+    $(document).ready(function() {
+
+      $("#buttonshoulder").click(function() {
+        if ($("#shoulder").is(':visible') && $('#shoulder').data/*affiche le texte du bouton concerné-->*/('lastClicked') !== this) {
+                    $('#shoulder').toggle/*affichage lent du texte en scrolling*/("slow")
+        } else {
+          /*Cache les autres textes*/$('p').hide();
+          $('#shoulder').toggle("slow");
+        }
+        $( ".buttton" ).removeClass( "redbutton" );
+        $( "#buttonshoulder").addClass("redbutton");
+        $('#shoulder').data('lastClicked', this);
+      });
+
+
+      $("#buttonelbow").click(function() {
+        if ($("#elbow").is(':visible') && $('#elbow').data('lastClicked') !== this) {
+          $('#elbow').toggle("slow");
+        } else {
+          $('p').hide();
+          $('#elbow').toggle("slow");
+        }
+        $( ".buttton" ).removeClass( "redbutton" );
+        $( "#buttonelbow").addClass("redbutton");
+        $('#elbow').data('lastClicked', this);
+      });
+
+
+      $("#buttonhip").click(function() {
+        if ($("#hip").is(':visible') && $('#hip').data('lastClicked') !== this) {
+          $('#hip').toggle("slow");
+        } else {
+          $('p').hide();
+          $('#hip').toggle("slow");
+        }
+        $( ".buttton" ).removeClass( "redbutton" );
+        $( "#buttonhip").addClass("redbutton");
+        $('#hip').data('lastClicked', this);
+      });
+
+
+      $("#buttonwrist").click(function() {
+        if ($("#wrist").is(':visible') && $('#wrist').data('lastClicked') !== this) {
+          $('#wrist').toggle("slow");
+        } else {
+          $('p').hide();
+          $('#wrist').toggle("slow");
+        }
+        $( ".buttton" ).removeClass( "redbutton" );
+        $( "#buttonwrist").addClass("redbutton");
+        $('#wrist').data('lastClicked', this);
+      });
+
+
+      $("#buttonknee").click(function() {
+        if ($("#knee").is(':visible') && $('#knee').data('lastClicked') !== this) {
+          $('#knee').toggle("slow");
+        } else {
+          $('p').hide();
+          $('#knee').toggle("slow");
+        }
+        $( ".buttton" ).removeClass( "redbutton" );
+        $( "#buttonknee").addClass("redbutton");
+        $('#knee').data('lastClicked', this);
+      });
+
+
+      $("#buttonankle").click(function() {
+        if ($("#ankle").is(':visible') && $('#ankle').data('lastClicked') !== this) {
+          $('#ankle').toggle("slow");
+        } else {
+          $('p').hide();
+          $('#ankle').toggle("slow");
+        }
+        $( ".buttton" ).removeClass( "redbutton" );
+        $( "#buttonankle").addClass("redbutton");
+        $('#ankle').data('lastClicked', this);
+      });
+    });
+  </script>
+</body>
+
+</html>
